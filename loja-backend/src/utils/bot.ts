@@ -1,12 +1,13 @@
 import { Telegraf } from 'telegraf'
-import dotenv from 'dotenv'
-import { Product } from './models/Product'
 
-dotenv.config()
+import { Product } from '../models/Product'
+import { config } from '../config'
 
-const bot = new Telegraf(process.env.TELEGRAM_TOKEN as string)
-const ADMIN_IDS = [process.env.ADMIN_ID as string]
-const CHAT_ID = process.env.CHAT_ID as string
+
+
+const bot = new Telegraf(config.telegramToken as string)
+const ADMIN_IDS = [config.adminId as string]
+const CHAT_ID = config.chatId as string
 
 const isAuthorized = (id: string) =>
   ADMIN_IDS.includes(id) || CHAT_ID.toString() === id.toString()

@@ -1,11 +1,10 @@
 import app from './app'
-import { connectMongo } from './config/mongo'
-import './bot'
-
-const PORT = process.env.PORT
+import './utils/bot'
+import { config, connectMongo } from './config'
+ 
 
 connectMongo().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`)
   })
 })
